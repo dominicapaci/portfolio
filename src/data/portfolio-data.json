@@ -1,0 +1,34 @@
+{
+    "meta": {
+      "title": "Dominic Capaci| Software Engineer",
+      "description": "Portfolio website showcasing development work and skills"
+    },
+    "personal": {
+      "name": "Dominic Capaci",
+      "title": "Software Engineer",
+      "location": "Orlando, FL",
+      "avatar": "/favicon.ico",
+      "email": "dominiccapaci@gmail.com",
+      "phone": "+1 (570) 793-0758",
+      "availableForWork": true,
+      "badges": ["UI/UX", "Front End", "Prototyping"],
+      "social": [
+        {
+          "platform": "GitHub",
+          "url": "#",
+          "icon": "Github"
+        },
+        {
+          "platform": "LinkedIn",
+          "url": "#",
+          "icon": "Linkedin"
+        },
+        {
+          "platform": "Instagram",
+          "url": "#",
+          "icon": "Instagram"
+        }
+      ]
+    }
+  }
+  
