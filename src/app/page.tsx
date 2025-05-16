@@ -7,6 +7,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { AnimatedSection } from "@/components/animated-section"
 import { EnhancedProfile } from "@/components/enhanced-profile"
 import { EnhancedProfileMobile } from "@/components/enhanced-profile-mobile"
+import { AboutMeSection } from "@/components/about-me-section"
 
 export default function Home() {
 
@@ -57,8 +58,15 @@ export default function Home() {
               </AnimatedSection>
             </div>
           </div>
+          <div className={`${isMobile ? "" : "md:col-span-9 lg:col-span-9"} space-y-4 sm:space-y-6`}>
+          {!isMobile && (
+              <AnimatedSection animation="fade-up" id="about" className="scroll-mt-24">
+                <AboutMeSection />
+              </AnimatedSection>
+            )}
+          </div>
         </div>
-       </div>
+      </div>
     </main>
   );
 }
