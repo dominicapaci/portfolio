@@ -16,3 +16,6 @@ export function getNavItems() {
     return data.personal
   }
   
+  export function getAboutInfo() {
+    return data.about
+  }

@@ -29,6 +29,29 @@
           "icon": "Instagram"
         }
       ]
-    }
+    },
+    "about": {
+    "bio": "sample bio. I will fill out what I wwant to say here later",
+    "focus": [
+      "I will fill out what I wwant to say here later",
+      "I will fill out what I wwant to say here later",
+      "I will fill out what I wwant to say here later"
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "proficiency": "Native",
+        "level": 100,
+        "flag": "🇺🇸"
+      },
+      {
+        "name": "Italian",
+        "proficiency": "Intermediate",
+        "level": 40,
+        "flag": "🇮🇹"
+      }
+    ],
+    "interests": ["Filler", "Filler", "Filler", "Filler", "Filler"]
+  }
   }
   
