@@ -52,6 +52,56 @@
       }
     ],
     "interests": ["Filler", "Filler", "Filler", "Filler", "Filler"]
-  }
+  },
+  "experience": [
+    {
+      "title": "Software engineer",
+      "company": "Backstage Technologies",
+      "period": "2021 - Present",
+      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "achievements": [
+        "I will fill in the achievements later",
+        "I will fill in the achievements later",
+        "I will fill in the achievements later"
+      ],
+      "technologies": ["tech", "tech", "tech", "tech"]
+    },
+    {
+      "title": "Software engineer",
+      "company": "Puzzlit Inc",
+      "period": "2021 - Present",
+      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "achievements": [
+        "I will fill in the achievements later",
+        "I will fill in the achievements later",
+        "I will fill in the achievements later"
+      ],
+      "technologies": ["tech", "tech", "tech", "tech"]
+    },
+    {
+      "title": "Software engineer",
+      "company": "Nightspot technologies",
+      "period": "2021 - Present",
+      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "achievements": [
+        "I will fill in the achievements later",
+        "I will fill in the achievements later",
+        "I will fill in the achievements later"
+      ],
+      "technologies": ["tech", "tech", "tech", "tech"]
+    },
+    {
+      "title": "Software engineer",
+      "company": "BNY",
+      "period": "2021 - Present",
+      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "achievements": [
+        "I will fill in the achievements later",
+        "I will fill in the achievements later",
+        "I will fill in the achievements later"
+      ],
+      "technologies": ["tech", "tech", "tech", "tech"]
+    }
+  ]
   }
   

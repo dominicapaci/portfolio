@@ -19,3 +19,7 @@ export function getNavItems() {
   export function getAboutInfo() {
     return data.about
   }
+
+  export function getExperienceInfo() {
+    return data.experience
+  }
