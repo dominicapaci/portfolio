@@ -1,6 +1,7 @@
 "use client"
 
-import type { ReactNode } from "react"
+import type { ReactNode, ForwardedRef, RefObject } from "react"
+import { forwardRef, useEffect } from "react"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 import { cn } from "@/lib/utils"
 import { useAnimation } from "@/contexts/animation-context"
@@ -18,17 +19,20 @@ interface AnimatedSectionProps {
   forceAnimate?: boolean
 }
 
-export function AnimatedSection({
-  children,
-  animation = "fade-up",
-  delay = 0,
-  className,
-  threshold = 0.1,
-  rootMargin = "-50px",
-  id,
-  forceAnimate = false,
-}: AnimatedSectionProps) {
-  const { ref, isIntersecting } = useIntersectionObserver({
+export const AnimatedSection = forwardRef(function AnimatedSection(
+  {
+    children,
+    animation = "fade-up",
+    delay = 0,
+    className,
+    threshold = 0.1,
+    rootMargin = "-50px",
+    id,
+    forceAnimate = false,
+  }: AnimatedSectionProps,
+  forwardedRef: ForwardedRef<HTMLElement>
+) {
+  const { ref: intersectionRef, isIntersecting } = useIntersectionObserver({
     threshold,
     rootMargin,
     freezeOnceVisible: true,
@@ -37,43 +41,24 @@ export function AnimatedSection({
   const { settings } = useAnimation()
   const shouldAnimate = settings.enabled || forceAnimate
 
+  // Use useEffect to sync the forwardedRef with the intersection observer ref
+  useEffect(() => {
+    if (!intersectionRef.current) return;
+    
+    // Update the forwarded ref to match the intersection ref's element
+    if (typeof forwardedRef === 'function') {
+      forwardedRef(intersectionRef.current);
+    } else if (forwardedRef) {
+      forwardedRef.current = intersectionRef.current;
+    }
+  }, [forwardedRef, intersectionRef.current]);
+
   // Calculate actual delay based on settings
   const actualDelay = (delay * settings.delay) / 100
 
   // Calculate transform values based on intensity
   const getTransformValue = (baseValue: number) => {
     return baseValue * settings.intensity
-  }
-
-  const getAnimationClasses = () => {
-    // If animations are disabled, return empty classes
-    if (!shouldAnimate) {
-      return ""
-    }
-
-    const baseClasses = `transition-all duration-${settings.duration} ${settings.easing}`
-    const delayClass = actualDelay ? `delay-${actualDelay}` : ""
-
-    if (!isIntersecting) {
-      switch (animation) {
-        case "fade-up":
-          return `${baseClasses} opacity-0 translate-y-[${getTransformValue(10)}px]`
-        case "fade-in":
-          return `${baseClasses} opacity-0`
-        case "slide-left":
-          return `${baseClasses} opacity-0 -translate-x-[${getTransformValue(10)}px]`
-        case "slide-right":
-          return `${baseClasses} opacity-0 translate-x-[${getTransformValue(10)}px]`
-        case "zoom-in":
-          return `${baseClasses} opacity-0 scale-[${1 - getTransformValue(0.05)}]`
-        case "bounce":
-          return `${baseClasses} opacity-0 -translate-y-[${getTransformValue(4)}px]`
-        default:
-          return `${baseClasses} opacity-0`
-      }
-    }
-
-    return `${baseClasses} ${delayClass} opacity-100 translate-y-0 translate-x-0 scale-100`
   }
 
   // Generate inline styles for custom duration and easing
@@ -114,8 +99,8 @@ export function AnimatedSection({
   }
 
   return (
-    <section ref={ref as any} className={cn(className)} style={getAnimationStyles()} id={id}>
+    <section ref={intersectionRef} className={cn(className)} style={getAnimationStyles()} id={id}>
       {children}
     </section>
   )
-}
+})

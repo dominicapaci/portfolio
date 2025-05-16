@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
-import { BriefcaseIcon, CodeIcon } from "lucide-react"
+import { BriefcaseIcon, CodeIcon, GlobeIcon } from "lucide-react"
 import { PortfolioHeader } from "@/components/portfolio-header"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { AnimatedSection } from "@/components/animated-section"
@@ -10,16 +10,19 @@ import { EnhancedProfile } from "@/components/enhanced-profile"
 import { EnhancedProfileMobile } from "@/components/enhanced-profile-mobile"
 import { AboutMeSection } from "@/components/about-me-section"
 import { Card, CardContent } from "@/components/ui/card"
-import { getExperienceInfo, getTechnicalSkillsInfo } from "@/lib/data"
+import { getExperienceInfo, getTechnicalSkillsInfo, getAllProjects } from "@/lib/data"
 import { ExperienceCard } from "@/components/experience-card"
 import { CredentialsSection } from "@/components/credentials-section"
 import { SkillTag } from "@/components/skill-tag"
+import { ProjectCard } from "@/components/project-card"
+import { EnhancedScrollIndicator } from "@/components/enhanced-scroll-indicator"
 
 export default function Home() {
 
   const isMobile = useIsMobile()
   const experienceInfo = getExperienceInfo()
   const technicalSkills = getTechnicalSkillsInfo()
+  const projects = getAllProjects()
   const [profileHeight, setProfileHeight] = useState<number | null>(null)
   const projectsSectionRef = useRef<HTMLDivElement>(null)
   const profileContainerRef = useRef<HTMLDivElement>(null)
@@ -159,9 +162,38 @@ export default function Home() {
               </Card>
             </AnimatedSection>
 
+            <AnimatedSection animation="fade-up" id="projects" className="scroll-mt-24" ref={projectsSectionRef}>
+              <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <div className="flex items-center">
+                      <GlobeIcon className="w-5 h-5 mr-2 text-cyan-400" />
+                      <h3 className="text-lg font-medium">Recent Projects</h3>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                    {projects.map((project, index) => (
+                      <AnimatedSection key={project.id} animation="zoom-in" delay={100 * (index + 1)}>
+                        <ProjectCard
+                          title={project.title}
+                          category={project.category}
+                          image={project.thumbnailImage}
+                          slug={project.slug}
+                        />
+                      </AnimatedSection>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
+
+
           </div>
         </div>
       </div>
+
+      <EnhancedScrollIndicator />
     </main>
   );
 }

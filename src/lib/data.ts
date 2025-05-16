@@ -1,6 +1,9 @@
 import portfolioData from "@/data/portfolio-data.json"
+import { projects, getAllProjects, getProjectBySlug, getRelatedProjects } from "@/lib/projects"
 
 export const data = portfolioData
+
+export { projects, getAllProjects, getProjectBySlug, getRelatedProjects }
 
 export function getNavItems() {
     return [
