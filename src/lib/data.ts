@@ -23,3 +23,12 @@ export function getNavItems() {
   export function getExperienceInfo() {
     return data.experience
   }
+
+  export function getCredentialsInfo() {
+    return data.credentials
+  }
+
+  export function getTechnicalSkillsInfo() {
+    return data.technicalSkills
+  }
+  

@@ -102,6 +102,53 @@
       ],
       "technologies": ["tech", "tech", "tech", "tech"]
     }
-  ]
+  ],
+  "credentials": {
+    "certifications": [
+      {
+        "name": "Get cert info",
+        "issuer": "Nielsen Norman Group",
+        "date": "2025",
+        "logo": "/favicon.ico"
+      },
+      {
+        "name": "Get cert info",
+        "issuer": "Nielsen Norman Group",
+        "date": "2025",
+        "logo": "/favicon.ico"
+      }
+    ],
+    "education": [
+      {
+        "degree": "B.S in Computer Science, Minor in Mathematics",
+        "institution": "Pennsylvania State University",
+        "year": "2019-2023",
+        "logo": "/favicon.ico"
+      }
+    ],
+    "skills": [
+      "skills later",
+      "skills later",
+      "skills later",
+      "skills later",
+      "skills later",
+      "skills later",
+      "skills later",
+      "skills later"
+    ]
+  },
+  "technicalSkills": {
+    "design": ["Figma", "Figma", "Figma", "Figma", "Figma", "Figma", "Figma", "Figma"],
+    "development": ["HTML/CSS", "JavaScript", "React", "Tailwind", "SCSS", "Git"],
+    "uxMethods": [
+      "still unsure",
+      "still unsure",
+      "still unsure",
+      "still unsure",
+      "still unsure",
+      "still unsure"
+    ],
+    "softSkills": ["Team Leadership", "Project Management", "Client Communication", "Mentoring", "Presentations"]
+  }
   }
   
