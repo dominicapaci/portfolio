@@ -188,6 +188,14 @@ export default function Home() {
               </Card>
             </AnimatedSection>
 
+            <AnimatedSection
+              animation="fade-in"
+              delay={500}
+              className="mt-8 sm:mt-12 py-4 sm:py-6 text-center text-xs sm:text-sm text-zinc-500"
+            >
+              <p>© {new Date().getFullYear()} Dominic Capaci. All rights reserved.</p>
+            </AnimatedSection>
+
 
           </div>
         </div>

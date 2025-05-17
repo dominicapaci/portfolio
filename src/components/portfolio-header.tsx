@@ -4,11 +4,14 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation" 
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { getNavItems, getPersonalInfo } from "@/lib/data"
 
 export function PortfolioHeader() {
+  const pathname = usePathname() 
+  const router = useRouter() 
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("about")
@@ -18,7 +21,19 @@ export function PortfolioHeader() {
   const navItems = allNavItems.filter((item) => item.href !== "/")
   const personalInfo = getPersonalInfo()
 
+  const isProjectPage = pathname?.startsWith('/projects/')
+
+
+   useEffect(() => {
+    if (isProjectPage) {
+      setActiveSection("projects")
+    }
+  }, [pathname, isProjectPage])
+
   useEffect(() => {
+
+    if (isProjectPage) return
+
     const header = document.querySelector("header")
     if (header) {
       setHeaderHeight(header.offsetHeight)
@@ -26,6 +41,16 @@ export function PortfolioHeader() {
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
+
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = window.innerHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+      if (scrollPercentage > 99) {
+        setActiveSection("projects");
+        return; // Very important! This prevents the other checks from running
+      }
 
       // Determine active section based on scroll position
       const sections = navItems.filter((item) => item.href.startsWith("#")).map((item) => item.href.substring(1))
@@ -84,6 +109,11 @@ export function PortfolioHeader() {
 
     if (href.startsWith("#")) {
       const sectionId = href.substring(1)
+      if (isProjectPage) {
+        router.push(`/#${sectionId}`)
+        return
+      }
+
       setActiveSection(sectionId)
       if (sectionId === "about") {
         window.scrollTo({
@@ -96,7 +126,7 @@ export function PortfolioHeader() {
       const element = document.getElementById(sectionId)
       if (element) {
         const elementPosition = element.getBoundingClientRect().top
-        const offsetPosition = elementPosition + window.scrollY - headerHeight - 20 
+        const offsetPosition = elementPosition + window.scrollY - headerHeight - 10 
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
@@ -107,10 +137,16 @@ export function PortfolioHeader() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
-        scrolled ? "bg-zinc-900/90 backdrop-blur-md shadow-md py-2" : "bg-transparent",
-      )}
+    className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-200 py-4",
+      scrolled 
+        ? mobileMenuOpen
+          ? "bg-zinc-900 py-2" // When scrolled AND mobile menu open: solid background, no blur
+          : "bg-zinc-900/90 backdrop-blur-md shadow-md py-2" // When scrolled but menu closed: normal behavior
+        : mobileMenuOpen
+          ? "bg-zinc-900" // When at top with menu open: solid background
+          : "bg-transparent" // When at top with menu closed: transparent
+    )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="#about" className="flex items-center group" onClick={(e) => handleNavClick("#about", e)}>
@@ -169,6 +205,7 @@ export function PortfolioHeader() {
           "fixed inset-0 bg-black/95 z-40 flex flex-col pt-20 px-4 md:hidden transition-all duration-500",
           mobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none",
         )}
+        
       >
         {/* Mobile Close button */}
         <button
