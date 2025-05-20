@@ -11,31 +11,31 @@
       "email": "dominiccapaci@gmail.com",
       "phone": "+1 (570) 793-0758",
       "availableForWork": true,
-      "badges": ["UI/UX", "Front End", "Prototyping"],
+      "badges": ["UI/UX Design", "Frontend Engineering", "Cloud Development"],
       "social": [
         {
           "platform": "GitHub",
-          "url": "#",
+          "url": "https://github.com/dominicapaci",
           "icon": "Github"
         },
         {
           "platform": "LinkedIn",
-          "url": "#",
+          "url": "https://www.linkedin.com/in/dominiccapaci/",
           "icon": "Linkedin"
         },
         {
           "platform": "Instagram",
-          "url": "#",
+          "url": "https://www.instagram.com/dominicapaci/",
           "icon": "Instagram"
         }
       ]
     },
     "about": {
-    "bio": "sample bio. I will fill out what I wwant to say here later",
+    "bio": "I build user-friendly web and mobile apps that solve real problems. With experience at BNY Mellon, Puzzlit, Backstage Technologies, and as a co-founder of Nightspot, I focus on creating accessible, performant products using React, TypeScript, and cloud technologies. I enjoy turning complex challenges into simple, useful experiences that people love to use.",
     "focus": [
-      "I will fill out what I wwant to say here later",
-      "I will fill out what I wwant to say here later",
-      "I will fill out what I wwant to say here later"
+      "Building accessible, user-centered web and mobile applications with React and TypeScript",
+      "Designing scalable front-end architectures and seamless user experiences",
+      "Integrating cloud technologies to deliver performant, reliable products"
     ],
     "languages": [
       {
@@ -50,74 +50,60 @@
         "level": 40,
         "flag": "🇮🇹"
       }
-    ],
-    "interests": ["Filler", "Filler", "Filler", "Filler", "Filler"]
+    ]
   },
   "experience": [
     {
-      "title": "Software engineer",
+      "title": "Software Engineer (Full-Stack) / UI Designer",
       "company": "Backstage Technologies",
-      "period": "2021 - Present",
-      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "period": "Sept 2024 – Feb 2025",
+      "description": "At Backstage Technologies, I designed and developed key features for a high-traffic ticketing platform, enabling thousands of users to buy, sell, and manage tickets seamlessly. My work directly supported approximately $450,000 in monthly sales by creating intuitive, responsive interfaces and efficient backend integrations.",
       "achievements": [
-        "I will fill in the achievements later",
-        "I will fill in the achievements later",
-        "I will fill in the achievements later"
+        "Built the Instant Cash ticket flow with React, TypeScript, and PostgreSQL, allowing users to sell tickets in under 2 minutes and driving thousands of monthly transactions.",
+        "Designed and implemented the “Sell” landing page using Figma and Tailwind CSS, effectively showcasing core platform features and improving user engagement.",
+        "Developed a giveaway system that attracted thousands of users, significantly increasing platform activity and user retention."
       ],
-      "technologies": ["tech", "tech", "tech", "tech"]
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "GraphQL", "Figma"]
     },
     {
-      "title": "Software engineer",
+      "title": "Software Engineer (Full-Stack)",
       "company": "Puzzlit Inc",
-      "period": "2021 - Present",
-      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "period": "March 2025 - Present",
+      "description": "At Puzzlit, I led the development of a layered SVG avatar customization system and a virtual shop, enabling users to personalize their in-app experience and purchase customizations. These features have driven hundreds of purchases in the shop’s early stages, directly boosting user engagement and monetization.",
       "achievements": [
-        "I will fill in the achievements later",
-        "I will fill in the achievements later",
-        "I will fill in the achievements later"
+        "Built a performant, layered SVG avatar system allowing for deep user customization and real-time updates.",
+        "Designed and implemented a virtual shop with inventory management and optimized asset delivery, supporting secure and efficient purchases.",
+        "Developed environment-specific asset management in Firebase Storage, ensuring fast and reliable access to user and shop assets."
       ],
-      "technologies": ["tech", "tech", "tech", "tech"]
+      "technologies": ["React Native", "Redux Toolkit", "Firebase", "TypeScript", "Python", "Framer"]
     },
     {
-      "title": "Software engineer",
-      "company": "Nightspot technologies",
-      "period": "2021 - Present",
-      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "title": "Co-Founder / Software Engineer (Full-Stack)",
+      "company": "Nightspot Networks",
+      "period": "Oct 2022 - Aug 2024",
+      "description": "At Nightspot, I co-founded and engineered a scalable web and mobile application from the ground up, using React JS for dynamic interfaces and MongoDB for flexible NoSQL data management. I collaborated on high-fidelity UI/UX designs in Figma and delivered performant, responsive experiences across both iOS and Android.",
       "achievements": [
-        "I will fill in the achievements later",
-        "I will fill in the achievements later",
-        "I will fill in the achievements later"
+        "Architected and developed the mobile application in React Native, translating Figma designs into native experiences for multiple platforms.",
+        "Built and maintained the web application with React JS and MongoDB, ensuring scalability and dynamic content delivery.",
+        "Partnered with the lead graphic designer to iterate on user interface and experience designs, enhancing usability and cross-platform consistency."
       ],
-      "technologies": ["tech", "tech", "tech", "tech"]
+      "technologies": ["React JS", "React Native", "MongoDB", "Figma", "TypeScript"]
     },
     {
-      "title": "Software engineer",
+      "title": "Software Engineer",
       "company": "BNY",
-      "period": "2021 - Present",
-      "description": "I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later I will fill in the description later ",
+      "period": "Aug 2023 - Present",
+      "description": "At BNY Mellon, I designed and implemented critical routing architecture for cloud migration projects, enabling independent service availability and scalability across Azure-based Kubernetes environments. I also led the development of a Chrome extension that streamlined debugging and analysis for both test and production environments.",
       "achievements": [
-        "I will fill in the achievements later",
-        "I will fill in the achievements later",
-        "I will fill in the achievements later"
+        "Built and configured ingress routes and a proxy application in Azure Kubernetes clusters to isolate NetX Investor and NetX Advisor traffic, improving service reliability and scalability.",
+        "Developed and deployed a Chrome extension allowing users to manually select traffic routes and override load-balancing protocols, enhancing flexibility in routing and testing.",
+        "Integrated real-time network traffic, cookie data, and metrics dashboards into the extension, providing intuitive tools for faster debugging and operational insight."
       ],
-      "technologies": ["tech", "tech", "tech", "tech"]
+      "technologies": ["Kubernetes", "Azure", "React", "TypeScript", "App Engine", "Docker"]
     }
   ],
   "credentials": {
-    "certifications": [
-      {
-        "name": "Get cert info",
-        "issuer": "Nielsen Norman Group",
-        "date": "2025",
-        "logo": "/favicon.ico"
-      },
-      {
-        "name": "Get cert info",
-        "issuer": "Nielsen Norman Group",
-        "date": "2025",
-        "logo": "/favicon.ico"
-      }
-    ],
+    
     "education": [
       {
         "degree": "B.S in Computer Science, Minor in Mathematics",
@@ -127,14 +113,15 @@
       }
     ],
     "skills": [
-      "skills later",
-      "skills later",
-      "skills later",
-      "skills later",
-      "skills later",
-      "skills later",
-      "skills later",
-      "skills later"
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React JS",
+      "React Native",
+      "Next JS",
+      "Figma",
+      "UX/UI",
+      "Tailwind"
     ]
   },
   "technicalSkills": {

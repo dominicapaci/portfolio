@@ -49,10 +49,10 @@ export function PortfolioHeader() {
 
       if (scrollPercentage > 99) {
         setActiveSection("projects");
-        return; // Very important! This prevents the other checks from running
+        return; 
       }
 
-      // Determine active section based on scroll position
+  
       const sections = navItems.filter((item) => item.href.startsWith("#")).map((item) => item.href.substring(1))
 
       let foundActiveSection = false
@@ -145,7 +145,7 @@ export function PortfolioHeader() {
           : "bg-zinc-900/90 backdrop-blur-md shadow-md py-2" // When scrolled but menu closed: normal behavior
         : mobileMenuOpen
           ? "bg-zinc-900" // When at top with menu open: solid background
-          : "bg-transparent" // When at top with menu closed: transparent
+          : "bg-zinc-900" // When at top with menu closed: transparent
     )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">

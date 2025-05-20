@@ -10,7 +10,6 @@ export function getNavItems() {
       { label: "About Me", href: "#about" },
       { label: "Experience", href: "#experience" },
       { label: "Credentials", href: "#credentials" },
-      { label: "Skills", href: "#skills" },
       { label: "Projects", href: "#projects" },
     ]
   }

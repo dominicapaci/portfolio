@@ -2,9 +2,11 @@
 import React from "react" 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Github } from "lucide-react"
+import { useState } from "react"
+import { ArrowLeft, ExternalLink, Github, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog"
 import { SkillTag } from "@/components/skill-tag"
 import { getProjectBySlug } from "@/lib/data"
 import { notFound } from "next/navigation"
@@ -22,6 +24,7 @@ interface ProjectPageProps {
 export default function ProjectPage({ params }: ProjectPageProps) {
     const { slug } = params;
     const project = getProjectBySlug(slug);
+    const [selectedImage, setSelectedImage] = useState<{ url: string; caption?: string } | null>(null)
 
   if (!project) {
     notFound()
@@ -136,7 +139,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                       {project.gallery.map((image, index) => (
                         <AnimatedSection key={index} animation="zoom-in" delay={100 * (index + 1)}>
-                          <div className="relative h-40 sm:h-48 rounded-lg overflow-hidden border border-zinc-800">
+                          <div className="relative h-50 sm:h-80 rounded-lg overflow-hidden border border-zinc-800" onClick={() => setSelectedImage(image)}>
                             <Image
                               src={image.url || "/placeholder.svg"}
                               alt={image.caption || `Gallery image ${index + 1}`}
@@ -221,10 +224,44 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           delay={500}
           className="mt-8 sm:mt-12 py-4 sm:py-6 text-center text-xs sm:text-sm text-zinc-500"
         >
-          <p>© {new Date().getFullYear()} Jane Doe. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Dominic Capaci. All rights reserved.</p>
         </AnimatedSection>
       </div>
       <EnhancedScrollIndicator />
+      <Dialog 
+        open={selectedImage !== null} 
+        onOpenChange={(open) => !open && setSelectedImage(null)}
+      >
+        <DialogContent className="max-w-6xl w-full p-0 bg-zinc-900/95 border-zinc-800">
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-zinc-800/80 p-2 text-white hover:bg-zinc-700 transition-colors">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+          
+          {selectedImage && (
+            <div className="relative w-full h-[90vh] flex items-center justify-center p-4">
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImage.url || "/placeholder.svg"}
+                  alt={selectedImage.caption || "Project image"}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  priority
+                />
+              </div>
+              
+              {selectedImage.caption && (
+                <div className="absolute bottom-4 left-0 right-0 text-center">
+                  <p className="bg-zinc-900/80 text-white py-2 px-4 mx-auto inline-block rounded-md text-sm">
+                    {selectedImage.caption}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </main>
   )
 }
