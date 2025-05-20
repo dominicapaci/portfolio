@@ -1,5 +1,5 @@
 "use client"
-import React from "react" 
+import React, { use } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -15,28 +15,25 @@ import { AnimatedSection } from "@/components/animated-section"
 import { PortfolioHeader } from "@/components/portfolio-header"
 import { useEffect } from "react"
 
-interface ProjectPageProps {
-  params: {
-    slug: string
-  }
-}
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-    const { slug } = params;
-    const project = getProjectBySlug(slug);
-    const [selectedImage, setSelectedImage] = useState<{ url: string; caption?: string } | null>(null)
+
+export default function ProjectPage({ params}: {params: Promise<{ slug: string }> & { slug: string }}) {
+  const unwrappedParams = use(params) as { slug: string };
+  const { slug } = unwrappedParams;
+  const project = getProjectBySlug(slug);
+
+  const [selectedImage, setSelectedImage] = useState<{ url: string; caption?: string } | null>(null)
 
   if (!project) {
     notFound()
   }
 
-  // Scroll to top when project page loads or when slug changes
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     })
-  }, [params.slug]) // Re-run when slug changes
+  }, [slug]) 
 
   return (
     <main className="min-h-screen bg-black text-white">
