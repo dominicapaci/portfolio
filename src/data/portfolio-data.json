@@ -10,7 +10,7 @@
       "avatar": "/headshot.jpg",
       "email": "dominiccapaci@gmail.com",
       "phone": "+1 (570) 793-0758",
-      "availableForWork": true,
+      "availableForWork": false,
       "badges": ["UI/UX Design", "Frontend Engineering", "Cloud Development"],
       "social": [
         {
