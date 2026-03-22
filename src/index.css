@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0c0e12;
+  --color-foreground: #f8fafc;
+  --color-surface: #0f172a;
+  --color-surface-raised: #1e293b;
+  --color-surface-overlay: #172033;
+  --color-primary: #00FFFF;
+  --color-primary-hover: #67e8f9;
+  --color-primary-active: #00CED1;
+  --color-primary-foreground: #0c0e12;
+  --color-secondary: #1e293b;
+  --color-secondary-hover: #334155;
+  --color-secondary-foreground: #f1f5f9;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #083344;
+  --color-accent-foreground: #a5f3fc;
+  --color-border: #1e293b;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-electric: #00FFFF;
+  --color-electric-dim: #00CED1;
+  --color-electric-glow: rgba(0, 255, 255, 0.15);
+
+  --font-heading: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --shadow-glow-sm: 0 0 12px rgba(0, 255, 255, 0.08);
+  --shadow-glow-md: 0 0 24px rgba(0, 255, 255, 0.12);
+  --shadow-glow-lg: 0 0 48px rgba(0, 255, 255, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Glow button animation */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 255, 255, 0.15), 0 0 24px rgba(0, 255, 255, 0.08); }
+  50% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.25), 0 0 40px rgba(0, 255, 255, 0.12); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* 3D card tilt effect */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(-5deg) rotateX(5deg) translateZ(10px);
+}
