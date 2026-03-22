@@ -1,11 +1,14 @@
 import { useState } from 'react'
 
-// Pluggable submit function — swap this when email service is chosen
 async function submitEmail(email) {
-  // TODO: Replace with actual email service (ConvertKit, Mailchimp, etc.)
-  console.log('Email submitted:', email)
-  // Simulate API call
-  return new Promise((resolve) => setTimeout(resolve, 1000))
+  const res = await fetch('/.netlify/functions/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email }),
+  })
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.error)
+  return data
 }
 
 export default function SignupForm() {
